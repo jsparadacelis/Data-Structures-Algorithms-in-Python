@@ -32,13 +32,17 @@ class LinkedList(object):
         """Get an element from a particular position.
         Assume the first position is "1".
         Return "None" if position is not in the list."""
+
         cont = 1
         current = self.head
+        # mientras el contador es menor a la posición y haya nodo siguiente
         while(cont < position) and current.next:
+            #nodo actual es igual a su nodo siguiente
             current = current.next
             cont+=1
-        
+        #Cuando el contador alcanza el valor de position
         if cont == position:
+            #Retorna el nodo actual
             return current
         return None
     
@@ -48,8 +52,11 @@ class LinkedList(object):
         
         Inserting at position 3 means between
         the 2nd and 3rd elements."""
+        #Obtiene el nodo anterior al de position
         before_element = self.get_position(position - 1)
+        #next del nuevo nodo apuntará al next del nodo anterior
         new_element.next = before_element.next
+        #El next del nodo anterior apuntará al nuevo nodo
         before_element.next = new_element
     
     def delete(self, value):
@@ -57,17 +64,21 @@ class LinkedList(object):
         cont = 0
         current = self.head
 
+        #Mientras el valor del nodo actual sea diferente
         while current.value != value and current.next:
+            #Avanza sobre los nodos de la lista y aumenta el contador
             current = current.next
             cont += 1
-        
+        #si el nodo actual es la cabeza, reasigna la cabeza a su siguiente
         if current == self.head:
             self.head = current.next
-            
+        #si no es la cabeza
         else:
+            #Encuentras su nodo anterior
             before_current = self.get_position(cont)
+            #Reasigna el nodo siguiente del nodo anterior
             before_current.next = current.next
-        
+        #Apunta el siguiente a None (null)
         current.next = None
     
     
