@@ -25,6 +25,8 @@ class LinkedList(object):
             current.next = new_element
         else:
             self.head = new_element
+
+    """ **** Here is my code **** """
             
     def get_position(self, position):
         """Get an element from a particular position.
